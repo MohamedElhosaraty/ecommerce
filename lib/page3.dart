@@ -1,3 +1,4 @@
+import 'package:ecommerce/page2.dart';
 import 'package:flutter/material.dart';
 
 class Page_Three extends StatelessWidget {
@@ -5,13 +6,15 @@ class Page_Three extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
-              SizedBox(
+              const  SizedBox(
                 height: 112,
               ),
               //Image
@@ -21,11 +24,11 @@ class Page_Three extends StatelessWidget {
                     width: 75,
                     height: 75,
                   )),
-              SizedBox(
+              const   SizedBox(
                 height: 16,
               ),
               //Text 1
-              Text(
+              const  Text(
                 "Let’s Get Started",
                 style: TextStyle(
                   color: Color(0xff223263),
@@ -33,30 +36,30 @@ class Page_Three extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              SizedBox(
+              const    SizedBox(
                 height: 8,
               ),
               // Text 2
-              Text(
+              const    Text(
                 "Create an new account",
-                style: TextStyle(color: Color(0x25f098b1), fontSize: 16,
+                style: TextStyle(color: Color(0xff9098B1), fontSize: 16,
                     fontWeight: FontWeight.w400),
               ),
-              SizedBox(
+              const   SizedBox(
                 height: 28,
               ),
               //Text form 1
               TextFormField(
-                decoration: InputDecoration(
+                decoration:const InputDecoration(
                     labelText: 'Full Name',
                     labelStyle: TextStyle(fontSize: 20),
                     prefixIcon: Padding(
-                      padding: const EdgeInsets.all(15.0),
+                      padding:  EdgeInsets.all(15.0),
                       child: Icon(Icons.person_outlined,size: 35,),
                     ),
                     border: OutlineInputBorder(),),
               ),
-              SizedBox(
+              const  SizedBox(
                 height: 8,
               ),
               //Text form 2
@@ -70,7 +73,7 @@ class Page_Three extends StatelessWidget {
                     ),
                     border: OutlineInputBorder()),
               ),
-              SizedBox(
+              const  SizedBox(
                 height: 8,
               ),
               //Text form 3
@@ -86,7 +89,7 @@ class Page_Three extends StatelessWidget {
                     ),
                     border: OutlineInputBorder()),
               ),
-              SizedBox(
+              const    SizedBox(
                 height: 8,
               ),
               //Text form 4
@@ -112,8 +115,10 @@ class Page_Three extends StatelessWidget {
                   width: double.infinity,
                   height: 57,
                   child: MaterialButton(
-                    onPressed: () {},
-                    child: Text(
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder:(context) => Page_Two()));
+                    },
+                    child:const Text(
                       "Sing in",
                       style: TextStyle(
                         fontSize: 20,
@@ -123,19 +128,19 @@ class Page_Three extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const   SizedBox(
                 height: 5,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("have a account?",style: TextStyle(
+                  const   Text("have a account?",style: TextStyle(
                     fontSize: 20,color: Color(0xff9098B1),
                   ),),
                   TextButton(
                       onPressed: (){},
                       child:
-                      Text("Sign In",
+                      const   Text("Sign In",
                         style: TextStyle(
                             fontSize: 18,color: Color(0xff40BFFF)),)),
 

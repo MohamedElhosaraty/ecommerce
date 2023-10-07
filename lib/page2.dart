@@ -1,3 +1,5 @@
+import 'package:ecommerce/page3.dart';
+import 'package:ecommerce/page4.dart';
 import 'package:flutter/material.dart';
 
 class Page_Two extends StatelessWidget {
@@ -39,7 +41,7 @@ class Page_Two extends StatelessWidget {
               // Text 2
               Text(
                 "Sign in to continue",
-                style: TextStyle(color: Color(0x25f098b1), fontSize: 16,
+                style: TextStyle(color: Color(0xff9098B1), fontSize: 16,
                 fontWeight: FontWeight.w400),
               ),
               SizedBox(
@@ -82,7 +84,9 @@ class Page_Two extends StatelessWidget {
                   width: double.infinity,
                   height: 57,
                   child: MaterialButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Page_Three(),));
+                    },
                     child: Text(
                       "Sing in",
                       style: TextStyle(
@@ -139,7 +143,7 @@ class Page_Two extends StatelessWidget {
                         "Login With Google ",
                         style: TextStyle(
                           fontSize: 20,
-                          color: Color(0xf0ebf0ff),
+                          color: Color(0xff9098B1),
                         ),
                       ),
                     ],
@@ -172,7 +176,7 @@ class Page_Two extends StatelessWidget {
                         "Login With facebook ",
                         style: TextStyle(
                           fontSize: 20,
-                          color: Color(0xf0ebf0ff),
+                          color: Color(0xff9098B1),
                         ),
                       ),
                     ],
