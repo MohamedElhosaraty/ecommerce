@@ -256,7 +256,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                 ),
                 FutureBuilder(
                     future: category,
-                    builder: (BuildContext context,
+                    builder: (BuildContext context ,
                         AsyncSnapshot<Category> snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return SizedBox(
