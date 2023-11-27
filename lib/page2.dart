@@ -2,8 +2,15 @@ import 'package:ecommerce/page3.dart';
 import 'package:ecommerce/page4.dart';
 import 'package:flutter/material.dart';
 
-class Page_Two extends StatelessWidget {
+class Page_Two extends StatefulWidget {
   const Page_Two({super.key});
+
+  @override
+  State<Page_Two> createState() => _Page_TwoState();
+}
+
+class _Page_TwoState extends State<Page_Two> {
+  final _forKey =GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +37,10 @@ class Page_Two extends StatelessWidget {
               Text(
                 "Welcome to Lafyuu",
                 style: TextStyle(
-                    color: Color(0xff223263),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                    ),
+                  color: Color(0xff223263),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
               SizedBox(
                 height: 8,
@@ -41,20 +48,31 @@ class Page_Two extends StatelessWidget {
               // Text 2
               Text(
                 "Sign in to continue",
-                style: TextStyle(color: Color(0xff9098B1), fontSize: 16,
-                fontWeight: FontWeight.w400),
+                style: TextStyle(
+                    color: Color(0xff9098B1),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400),
               ),
               SizedBox(
                 height: 28,
               ),
               //Text form 1
               TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (value){
+                  if(value ==null || value.contains("@gmail.com") ==false){
+                    return "Enter valid email";
+                  }
+                },
                 decoration: InputDecoration(
                     labelText: 'Your Email',
                     labelStyle: TextStyle(fontSize: 20),
                     prefixIcon: Padding(
                       padding: const EdgeInsets.all(15.0),
-                      child: Icon(Icons.email_outlined,size: 35,),
+                      child: Icon(
+                        Icons.email_outlined,
+                        size: 35,
+                      ),
                     ),
                     border: OutlineInputBorder()),
               ),
@@ -63,6 +81,12 @@ class Page_Two extends StatelessWidget {
               ),
               //Text form 2
               TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (value){
+                  if(value ==null || value.length < 8){
+                    return "Enter valid password";
+                  }
+                },
                 obscureText: true,
                 decoration: const InputDecoration(
                     labelText: 'Password',
@@ -70,7 +94,10 @@ class Page_Two extends StatelessWidget {
                     suffixIcon: Icon(Icons.visibility_off),
                     prefixIcon: Padding(
                       padding: EdgeInsets.all(15.0),
-                      child: Icon(Icons.lock_outline,size: 30,),
+                      child: Icon(
+                        Icons.lock_outline,
+                        size: 30,
+                      ),
                     ),
                     border: OutlineInputBorder()),
               ),
@@ -85,10 +112,17 @@ class Page_Two extends StatelessWidget {
                   height: 57,
                   child: MaterialButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Page_Three(),));
+                    if(_forKey.currentState!.validate()){
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => Page_Three()),
+                      );
+                    }else{
+                      print ("Not Success");
+                    }
                     },
-                    child: Text(
-                      "Sing in",
+                    child:const Text(
+                      "Login in",
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white,
@@ -108,9 +142,12 @@ class Page_Two extends StatelessWidget {
                       color: Color(0xffEBF0FF),
                     ),
                   ),
-                  Text("   OR   ",style: TextStyle(fontSize: 15,fontWeight: FontWeight.w400),),
+                  Text(
+                    "   OR   ",
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
+                  ),
                   Expanded(
-                    child:Divider(
+                    child: Divider(
                       thickness: 1,
                       color: Color(0xffEBF0FF),
                     ),
@@ -125,9 +162,10 @@ class Page_Two extends StatelessWidget {
                 width: 400,
                 height: 70,
                 decoration: BoxDecoration(
-                    color: Colors.white24,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.black12),),
+                  color: Colors.white24,
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: Colors.black12),
+                ),
                 child: MaterialButton(
                   onPressed: () {},
                   child: Row(
@@ -188,28 +226,33 @@ class Page_Two extends StatelessWidget {
               ),
               Center(
                 child: TextButton(
-                    onPressed: (){},
-                    child:
-                    Text("Forgot Password?",
-                      style: TextStyle(
-                          fontSize: 16,color: Color(0xff40BFFF)),)),
+                    onPressed: () {},
+                    child: Text(
+                      "Forgot Password?",
+                      style: TextStyle(fontSize: 16, color: Color(0xff40BFFF)),
+                    )),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Don’t have a account?",style: TextStyle(
-                    fontSize: 20,color: Color(0xff9098B1),
-                  ),),
-                  TextButton(
-                      onPressed: (){},
-                      child:
-                      Text("Register",
-                        style: TextStyle(
-                            fontSize: 18,color: Color(0xff40BFFF)),)),
-
+                  Text(
+                    "Don’t have a account?",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Color(0xff9098B1),
+                    ),
+                  ),
+                  GestureDetector(
+                      onTap: () {
+                        print ('login in');
+                      },
+                      child: Text(
+                        "Register",
+                        style:
+                            TextStyle(fontSize: 18, color: Color(0xff40BFFF)),
+                      )),
                 ],
               ),
-              
             ],
           ),
         ),

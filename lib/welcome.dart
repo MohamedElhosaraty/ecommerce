@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Welcome_Screen extends StatelessWidget {
-  const Welcome_Screen({super.key});
+ class Welcome_Screen extends StatelessWidget {
+  const Welcome_Screen({super.key,});
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return Scaffold(
-      body: SafeArea(
+     return SafeArea(
         child: Container(
           width: size.width,
           height: size.height,
@@ -52,7 +51,6 @@ class Welcome_Screen extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }
